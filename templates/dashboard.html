@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Dashboard</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 40px; }
+        .metric { margin: 10px 0; }
+    </style>
+</head>
+<body>
+    <h1>Dashboard</h1>
+    <div class="metric">Total Users: {{ metrics.users }}</div>
+    <div class="metric">Active Sessions: {{ metrics.active_sessions }}</div>
+    <div class="metric">Revenue: ${{ metrics.revenue }}</div>
+</body>
+</html>
