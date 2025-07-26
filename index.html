@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RentMind Dashboard</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 0; padding: 0; }
+        header { background: #4e73df; color: white; padding: 1rem; text-align: center; }
+        nav { background: #f8f9fc; padding: 1rem; display: flex; justify-content: space-around; }
+        nav button { padding: 0.5rem 1rem; border: none; background: #e2e6ea; cursor: pointer; }
+        nav button.active { background: #4e73df; color: white; }
+        section { display: none; padding: 1rem; }
+        section.active { display: block; }
+        table { border-collapse: collapse; width: 100%; margin-top: 1rem; }
+        th, td { border: 1px solid #ddd; padding: 0.5rem; text-align: left; }
+        th { background: #f1f1f1; }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>RentMind Management Panel</h1>
+    </header>
+    <nav>
+        <button id="overviewTab" class="active" onclick="showSection('overview')">Property Overview</button>
+        <button id="calendarTab" onclick="showSection('calendar')">Booking Calendar</button>
+        <button id="chatTab" onclick="showSection('communication')">Communication Center</button>
+        <button id="maintenanceTab" onclick="showSection('maintenance')">Maintenance Board</button>
+        <button id="cleaningTab" onclick="showSection('cleaning')">Cleaning Tracker</button>
+        <button id="financeTab" onclick="showSection('finance')">Finance & Insights</button>
+        <button id="alertsTab" onclick="showSection('alerts')">Smart Alerts</button>
+    </nav>
+    <section id="overview" class="active">
+        <h2>Property Overview</h2>
+        <!-- Placeholder table for apartments -->
+        <table>
+            <thead>
+                <tr>
+                    <th>Apartment</th>
+                    <th>Status</th>
+                    <th>Rating</th>
+                    <th>Open Issues</th>
+                    <th>Occupancy</th>
+                </tr>
+            </thead>
+            <tbody id="overviewBody">
+                <!-- Dynamic rows will be inserted here -->
+            </tbody>
+        </table>
+    </section>
+    <section id="calendar">
+        <h2>Smart Booking Calendar</h2>
+        <p>Calendar integration placeholder.</p>
+    </section>
+    <section id="communication">
+        <h2>Communication Center</h2>
+        <p>Chat threads and logs placeholder.</p>
+    </section>
+    <section id="maintenance">
+        <h2>Maintenance Board</h2>
+        <p>Maintenance issues placeholder.</p>
+    </section>
+    <section id="cleaning">
+        <h2>Cleaning Tracker</h2>
+        <p>Cleaning tasks placeholder.</p>
+    </section>
+    <section id="finance">
+        <h2>Finance & Insights</h2>
+        <p>Financial charts placeholder.</p>
+    </section>
+    <section id="alerts">
+        <h2>Smart Alerts & Notifications</h2>
+        <p>Alerts placeholder.</p>
+    </section>
+    <script>
+        const sections = ['overview', 'calendar', 'communication', 'maintenance', 'cleaning', 'finance', 'alerts'];
+        function showSection(id) {
+            sections.forEach(s => {
+                document.getElementById(s).classList.remove('active');
+                document.getElementById(s + 'Tab').classList.remove('active');
+            });
+            document.getElementById(id).classList.add('active');
+            document.getElementById(id + 'Tab').classList.add('active');
+        }
+
+        // Mock data for demo purposes
+        const properties = [
+            { name: 'Suite 101', status: 'Available', rating: 4.7, issues: 0, occupancy: '0%' },
+            { name: 'Suite 102', status: 'Booked', rating: 4.5, issues: 1, occupancy: '100%' },
+            { name: 'Suite 103', status: 'Under Maintenance', rating: 4.2, issues: 2, occupancy: '0%' }
+        ];
+
+        function renderOverview() {
+            const tbody = document.getElementById('overviewBody');
+            tbody.innerHTML = '';
+            properties.forEach(p => {
+                const row = document.createElement('tr');
+                row.innerHTML = `<td>${p.name}</td><td>${p.status}</td><td>${p.rating}</td><td>${p.issues}</td><td>${p.occupancy}</td>`;
+                tbody.appendChild(row);
+            });
+        }
+
+        renderOverview();
+    </script>
+</body>
+</html>
